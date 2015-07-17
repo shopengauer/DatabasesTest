@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - test@localhost" uuid="9f458c8d-44a7-47f9-8df6-5656524938ed">
+    <database-info product="MySQL" version="5.7.4-m14-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="test"/>
+    <table name="document_type" schema="" catalog="test" type="TABLE">
+      <column name="iddocument_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="doc_type" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="doc_type_description" sqlType="VARCHAR" precision="512" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="iddocument_type"/>
+      <exported-key name="fk_documentation_document_type1" table="documentation" schema="" catalog="test" columns="document_type_id"/>
+      <index name="document_type_UNIQUE" unique="true" columns="doc_type"/>
+      <index name="iddocument_type_UNIQUE" unique="true" columns="iddocument_type"/>
+    </table>
+    <table name="documentation" schema="" catalog="test" type="TABLE">
+      <column name="id_documentation" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="document_cod" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="document_name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="document_desc" sqlType="VARCHAR" precision="512" scale="0" nullable="false" jdbcType="12"/>
+      <column name="document_file" sqlType="MEDIUMBLOB" precision="16777215" scale="0" nullable="false" jdbcType="-4"/>
+      <column name="document_filename" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="techobject_part_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="document_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id_documentation"/>
+      <foreign-key name="fk_documentation_document_type1" columns="document_type_id" ref-table="document_type" ref-schema="" ref-catalog="test" ref-columns="iddocument_type" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_documentation_techobject_part1" columns="techobject_part_id" ref-table="techobject_part" ref-schema="" ref-catalog="test" ref-columns="id_techobject_part" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="document_type_id_UNIQUE" unique="true" columns="document_type_id"/>
+      <index name="fk_documentation_document_type1_idx" unique="false" columns="document_type_id"/>
+      <index name="fk_documentation_techobject_part1_idx" unique="false" columns="techobject_part_id"/>
+    </table>
+    <table name="employee" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_techobject_employee" table="techobject" schema="" catalog="test" columns="employee_id"/>
+      <index name="username_UNIQUE" unique="true" columns="username"/>
+    </table>
+    <table name="energymeter" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="em" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phn" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="mytable" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="mytable2" schema="" catalog="test" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="part_references" schema="" catalog="test" type="TABLE">
+      <column name="id_partref" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="partref" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" remarks="IA=="/>
+      <column name="rowobject_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="techobject_part_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="description" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_partref"/>
+      <foreign-key name="fk_part_references_rowobject1" columns="rowobject_id" ref-table="rowobject" ref-schema="" ref-catalog="test" ref-columns="id_rowobject" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_part_references_techobject_part1" columns="techobject_part_id" ref-table="techobject_part" ref-schema="" ref-catalog="test" ref-columns="id_techobject_part" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_part_references_rowobject1_idx" unique="false" columns="rowobject_id"/>
+      <index name="fk_part_references_techobject_part1_idx" unique="false" columns="techobject_part_id"/>
+    </table>
+    <table name="replace_time" schema="" catalog="test" type="TABLE">
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_replacement_timestamps_11" table="replacement" schema="" catalog="test" columns="timestamps_1_id"/>
+      <index name="id_UNIQUE" unique="true" columns="id"/>
+    </table>
+    <table name="replacement" schema="" catalog="test" type="TABLE">
+      <column name="id_replacement" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="replacement_name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="replacement_manufacture" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="accepted" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="production_time" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="moq" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="price_unit" sqlType="DECIMAL" precision="10" scale="0" nullable="true" jdbcType="3"/>
+      <column name="rowobject_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="timestamps_1_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_replacement"/>
+      <foreign-key name="fk_replacement_rowobject1" columns="rowobject_id" ref-table="rowobject" ref-schema="" ref-catalog="test" ref-columns="id_rowobject" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_replacement_timestamps_11" columns="timestamps_1_id" ref-table="replace_time" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_replacement_rowobject1_idx" unique="false" columns="rowobject_id"/>
+      <index name="fk_replacement_timestamps_11_idx" unique="false" columns="timestamps_1_id"/>
+    </table>
+    <table name="rowobject" schema="" catalog="test" type="TABLE">
+      <column name="id_rowobject" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="rowobject_cod" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="rowobject_pack" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rowobject_description" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rowobject_value" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rowobject_voltage" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rowobject_current" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rowobject_power" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rowobject_tolerance" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rowobject_manufacture" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rowobject_rohs" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rowobject_pdf" sqlType="MEDIUMBLOB" precision="16777215" scale="0" nullable="true" jdbcType="-4"/>
+      <column name="description" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="timestamps_id" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="rowobject_pdf_rowobject_pdf_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_rowobject"/>
+      <foreign-key name="fk_rowobject_rowobject_pdf1" columns="rowobject_pdf_rowobject_pdf_id" ref-table="rowobject_pdf" ref-schema="" ref-catalog="test" ref-columns="rowobject_pdf_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_rowobject_timestamps1" columns="timestamps_id" ref-table="rowobject_time" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_part_references_rowobject1" table="part_references" schema="" catalog="test" columns="rowobject_id"/>
+      <exported-key name="fk_replacement_rowobject1" table="replacement" schema="" catalog="test" columns="rowobject_id"/>
+      <index name="description_UNIQUE" unique="true" columns="description"/>
+      <index name="fk_rowobject_rowobject_pdf1_idx" unique="false" columns="rowobject_pdf_rowobject_pdf_id"/>
+      <index name="fk_rowobject_timestamps1_idx" unique="false" columns="timestamps_id"/>
+    </table>
+    <table name="rowobject_pdf" schema="" catalog="test" type="TABLE">
+      <column name="rowobject_pdf_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="rowobject_pdf_filename" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="rowobject_pdf" sqlType="MEDIUMBLOB" precision="16777215" scale="0" nullable="false" jdbcType="-4"/>
+      <primary-key name="PRIMARY" columns="rowobject_pdf_id"/>
+      <exported-key name="fk_rowobject_rowobject_pdf1" table="rowobject" schema="" catalog="test" columns="rowobject_pdf_rowobject_pdf_id"/>
+    </table>
+    <table name="rowobject_time" schema="" catalog="test" type="TABLE">
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="id" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_rowobject_timestamps1" table="rowobject" schema="" catalog="test" columns="timestamps_id"/>
+    </table>
+    <table name="sequence" schema="" catalog="test" type="TABLE">
+      <column name="SEQ_NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="SEQ_COUNT" sqlType="DECIMAL" precision="38" scale="0" nullable="true" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="SEQ_NAME"/>
+    </table>
+    <table name="techobject" schema="" catalog="test" type="TABLE">
+      <column name="id_techobject" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="techobject_name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="techobject_cod" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="techobject_version" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="techobject_description" sqlType="VARCHAR" precision="1024" scale="0" nullable="true" jdbcType="12"/>
+      <column name="employee_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="techobject_type_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id_techobject"/>
+      <foreign-key name="fk_techobject_employee" columns="employee_id" ref-table="employee" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_techobject_table" columns="techobject_type_id" ref-table="techobject_type" ref-schema="" ref-catalog="test" ref-columns="techobject_type_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_techobject_part_techobject1" table="techobject_part" schema="" catalog="test" columns="techobject_id"/>
+      <index name="techobject_name_UNIQUE" unique="true" columns="techobject_name"/>
+      <index name="fk_techobject_employee1_idx" unique="false" columns="employee_id"/>
+      <index name="fk_techobject_table11_idx" unique="false" columns="techobject_type_id"/>
+    </table>
+    <table name="techobject_part" schema="" catalog="test" type="TABLE">
+      <column name="id_techobject_part" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="part_name" sqlType="VARCHAR" precision="75" scale="0" nullable="false" jdbcType="12"/>
+      <column name="part_cod" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="part_level" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="part_version" sqlType="VARCHAR" precision="75" scale="0" nullable="true" jdbcType="12"/>
+      <column name="techobject_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="part_parent" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="techobject_part_id_techobject_part" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id_techobject_part"/>
+      <foreign-key name="fk_techobject_part_techobject1" columns="techobject_id" ref-table="techobject" ref-schema="" ref-catalog="test" ref-columns="id_techobject" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_techobject_part_techobject_part1" columns="techobject_part_id_techobject_part" ref-table="techobject_part" ref-schema="" ref-catalog="test" ref-columns="id_techobject_part" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_documentation_techobject_part1" table="documentation" schema="" catalog="test" columns="techobject_part_id"/>
+      <exported-key name="fk_part_references_techobject_part1" table="part_references" schema="" catalog="test" columns="techobject_part_id"/>
+      <exported-key name="fk_techobject_part_techobject_part1" table="techobject_part" schema="" catalog="test" columns="techobject_part_id_techobject_part"/>
+      <index name="fk_techobject_part_techobject1_idx" unique="false" columns="techobject_id"/>
+      <index name="fk_techobject_part_techobject_part1_idx" unique="false" columns="techobject_part_id_techobject_part"/>
+    </table>
+    <table name="techobject_type" schema="" catalog="test" type="TABLE">
+      <column name="techobject_type_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="techobject_type" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="techobject_desc" sqlType="VARCHAR" precision="512" scale="0" nullable="true" jdbcType="12"/>
+      <column name="create_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="techobject_type_id"/>
+      <exported-key name="fk_techobject_table" table="techobject" schema="" catalog="test" columns="techobject_type_id"/>
+      <index name="techobject_type_UNIQUE" unique="true" columns="techobject_type"/>
+    </table>
+    <table name="wer" schema="" catalog="test" type="TABLE">
+      <column name="column_1" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="column_2" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="column_3" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+    </table>
+  </data-source>
+</component>
